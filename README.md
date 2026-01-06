@@ -6,6 +6,8 @@ A Chrome extension that provides semantic search - like Ctrl+F but with AI-power
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
 
+![Semantic Find Demo](assets/demo.png)
+
 ## Features
 
 - **Semantic Search**: Find content by meaning, not just exact text matches
