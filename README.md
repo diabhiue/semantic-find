@@ -10,7 +10,7 @@ A Chrome extension that provides semantic search - like Ctrl+F but with AI-power
 
 - **Semantic Search**: Find content by meaning, not just exact text matches
 - **Chrome-Style UI**: Familiar Ctrl+F look and feel
-- **Keyboard Shortcut**: Press `Ctrl+Shift+F` (Mac: `Cmd+Shift+F`) to open
+- **Keyboard Shortcut**: Press `Alt+Shift+F` (Mac: `Ctrl+Shift+F`) to open
 - **100% Local**: All AI processing happens in your browser - no data sent to servers
 - **Fast**: WebGPU acceleration with WASM fallback
 - **Smart Caching**: Instant results on revisited pages
@@ -48,7 +48,7 @@ Coming soon!
 
 ## Usage
 
-1. Press `Ctrl+Shift+F` (or `Cmd+Shift+F` on Mac) on any webpage
+1. Press `Alt+Shift+F` (or `Ctrl+Shift+F` on Mac) on any webpage
 2. Type your search query (searches by meaning, not exact match)
 3. Use `Enter` / `Shift+Enter` or arrow buttons to navigate results
 4. Press `Escape` to close
