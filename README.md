@@ -26,7 +26,7 @@ Coming soon!
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/semantic-find.git
+   git clone https://github.com/diabhiue/semantic-find.git
    cd semantic-find
    ```
 
