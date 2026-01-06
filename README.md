@@ -113,7 +113,10 @@ semantic-find/
 ├── tsconfig.json              # TypeScript configuration
 ├── src/
 │   ├── background/
-│   │   └── service-worker.ts  # Message routing, offscreen management
+│   │   ├── service-worker.ts  # Message routing, offscreen management
+│   │   ├── model-loader.ts    # Transformers.js model loading
+│   │   ├── llm-loader.ts      # WebLLM loader for AI summaries
+│   │   └── embedding-cache.ts # IndexedDB caching for embeddings
 │   ├── content/
 │   │   ├── content-script.ts  # Main content script entry
 │   │   ├── text-chunker.ts    # Smart text segmentation
@@ -129,16 +132,22 @@ semantic-find/
 │   │   └── popup.css          # Settings styles
 │   ├── shared/
 │   │   ├── types.ts           # TypeScript type definitions
+│   │   ├── messages.ts        # Chrome message type definitions
 │   │   └── similarity.ts      # Cosine similarity calculation
 │   └── styles/
 │       └── overlay.css        # Chrome-style search bar CSS
 ├── e2e/
 │   └── semantic-search.spec.ts # End-to-end Playwright tests
 ├── tests/
+│   ├── setup.ts               # Jest test setup
 │   ├── similarity.test.ts     # Unit tests for similarity
-│   └── text-chunker.test.ts   # Unit tests for text chunking
-└── public/
-    └── icons/                 # Extension icons
+│   ├── text-chunker.test.ts   # Unit tests for text chunking
+│   ├── highlighter.test.ts    # Unit tests for highlighter
+│   ├── messages.test.ts       # Unit tests for messages
+│   └── types.test.ts          # Unit tests for types
+└── semantic-find/
+    └── public/
+        └── icons/             # Extension icons (SVG)
 ```
 
 ## Development
@@ -182,17 +191,14 @@ E2E tests use Playwright to test the extension on real web pages (Wikipedia):
 # Install Playwright browsers (first time only)
 npx playwright install chromium
 
-# Run E2E tests (headless)
+# Run E2E tests
 npm run test:e2e
-
-# Run E2E tests with browser visible
-npm run test:e2e:headed
 
 # Run E2E tests in debug mode
 npm run test:e2e:debug
 ```
 
-**Note**: E2E tests require a built extension (`npm run build` first) and run against the Wikipedia Google page to verify:
+**Note**: E2E tests require a built extension (`npm run build` first). Tests run with browser visible (extensions require non-headless mode) and verify functionality on the Wikipedia Google page:
 - Extension loads correctly
 - Search overlay opens with keyboard shortcut
 - Semantic search returns relevant results
