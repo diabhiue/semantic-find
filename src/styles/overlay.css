@@ -1,0 +1,237 @@
+/* Semantic Find Overlay - Chrome Ctrl+F style */
+
+#semantic-find-overlay {
+  position: fixed;
+  top: 0;
+  right: 24px;
+  z-index: 2147483647;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: opacity 0.1s ease, transform 0.15s ease, visibility 0.1s;
+}
+
+#semantic-find-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#semantic-find-overlay .sf-container {
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  gap: 4px;
+}
+
+/* Search input */
+#semantic-find-overlay #sf-search-input {
+  width: 224px;
+  height: 28px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  color: #202124;
+  background: #fff;
+  outline: none;
+}
+
+#semantic-find-overlay #sf-search-input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 1px #1a73e8;
+}
+
+#semantic-find-overlay #sf-search-input::placeholder {
+  color: #80868b;
+}
+
+/* Match count */
+#semantic-find-overlay .sf-count {
+  font-size: 12px;
+  color: #5f6368;
+  padding: 0 8px;
+  white-space: nowrap;
+  min-width: 48px;
+  text-align: center;
+}
+
+/* Status text */
+#semantic-find-overlay .sf-status {
+  font-size: 11px;
+  color: #5f6368;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+/* Separator */
+#semantic-find-overlay .sf-separator {
+  width: 1px;
+  height: 20px;
+  background: #dadce0;
+  margin: 0 4px;
+}
+
+/* Navigation and close buttons */
+#semantic-find-overlay .sf-nav-btn,
+#semantic-find-overlay .sf-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #5f6368;
+  transition: background-color 0.1s;
+  padding: 0;
+}
+
+#semantic-find-overlay .sf-nav-btn:hover,
+#semantic-find-overlay .sf-close-btn:hover {
+  background-color: rgba(95, 99, 104, 0.08);
+}
+
+#semantic-find-overlay .sf-nav-btn:active,
+#semantic-find-overlay .sf-close-btn:active {
+  background-color: rgba(95, 99, 104, 0.16);
+}
+
+#semantic-find-overlay .sf-nav-btn:disabled {
+  color: #dadce0;
+  cursor: default;
+}
+
+#semantic-find-overlay .sf-nav-btn:disabled:hover {
+  background-color: transparent;
+}
+
+#semantic-find-overlay .sf-nav-btn svg,
+#semantic-find-overlay .sf-close-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Summary Panel */
+#semantic-find-summary-panel {
+  display: none;
+  border-top: 1px solid #dadce0;
+  padding: 8px 10px;
+  max-width: 360px;
+}
+
+#semantic-find-summary-panel.visible {
+  display: block;
+}
+
+#semantic-find-summary-panel .sf-summary-content {
+  background: #f8f9fa;
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+#semantic-find-summary-panel .sf-summary-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #202124;
+}
+
+#semantic-find-summary-panel .sf-summary-loading {
+  color: #5f6368;
+  font-style: italic;
+}
+
+/* Text Highlighting - Chrome yellow */
+::highlight(semantic-find-highlight) {
+  background-color: #ffff00;
+}
+
+::highlight(semantic-find-highlight-active) {
+  background-color: #ff9632;
+}
+
+/* Fallback for browsers without CSS Highlight API */
+.semantic-find-highlight {
+  background-color: #ffff00 !important;
+}
+
+.semantic-find-highlight-active {
+  background-color: #ff9632 !important;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  #semantic-find-overlay .sf-container {
+    background: #292a2d;
+    border-color: #3c4043;
+  }
+
+  #semantic-find-overlay #sf-search-input {
+    background: #202124;
+    border-color: #5f6368;
+    color: #e8eaed;
+  }
+
+  #semantic-find-overlay #sf-search-input:focus {
+    border-color: #8ab4f8;
+    box-shadow: 0 0 0 1px #8ab4f8;
+  }
+
+  #semantic-find-overlay #sf-search-input::placeholder {
+    color: #9aa0a6;
+  }
+
+  #semantic-find-overlay .sf-count,
+  #semantic-find-overlay .sf-status {
+    color: #9aa0a6;
+  }
+
+  #semantic-find-overlay .sf-separator {
+    background: #5f6368;
+  }
+
+  #semantic-find-overlay .sf-nav-btn,
+  #semantic-find-overlay .sf-close-btn {
+    color: #9aa0a6;
+  }
+
+  #semantic-find-overlay .sf-nav-btn:hover,
+  #semantic-find-overlay .sf-close-btn:hover {
+    background-color: rgba(232, 234, 237, 0.08);
+  }
+
+  #semantic-find-overlay .sf-nav-btn:disabled {
+    color: #5f6368;
+  }
+
+  #semantic-find-summary-panel {
+    border-top-color: #5f6368;
+  }
+
+  #semantic-find-summary-panel .sf-summary-content {
+    background: #3c4043;
+  }
+
+  #semantic-find-summary-panel .sf-summary-text {
+    color: #e8eaed;
+  }
+
+  ::highlight(semantic-find-highlight) {
+    background-color: #ffff00;
+    color: #000;
+  }
+
+  ::highlight(semantic-find-highlight-active) {
+    background-color: #ff9632;
+    color: #000;
+  }
+}

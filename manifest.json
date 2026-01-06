@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Semantic Find",
+  "version": "1.0.0",
+  "description": "AI-powered semantic search - like Ctrl+F but understands meaning",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "toggle-semantic-search": {
+      "suggested_key": {
+        "default": "Alt+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Toggle Semantic Find overlay"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.wasm", "*.onnx"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
